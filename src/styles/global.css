@@ -344,7 +344,9 @@ nav.bar .links {
   line-height: 1.04;
   letter-spacing: -0.025em;
   margin-top: 26px;
-  max-width: 17ch;
+  /* wider so the home headline fills the space above the reel (2 lines,
+     not a narrow far-left column); short project/page titles are unaffected */
+  max-width: 24ch;
 }
 .sub {
   font-size: clamp(17px, 1.5vw, 20px);
@@ -856,18 +858,15 @@ footer.ft,
 .ft {
   border-top: 1px solid var(--line);
 }
+/* the wrapper IS the flex row, so it keeps the gutter + max-width (no edge-bleed) */
 .ft .wrap,
 .ft .container {
-  /* let the footer's flex layout span the children directly */
-  display: contents;
-}
-footer.ft {
-  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 14px;
+  min-height: 120px;
   padding-block: 24px;
 }
 .ft .fw {

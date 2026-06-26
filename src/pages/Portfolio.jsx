@@ -105,6 +105,11 @@ export default function Portfolio() {
           <span className="ln">
             Got a brand that&rsquo;s ready for what&rsquo;s next? Let&rsquo;s get into it.
           </span>
+          <div style={{ marginTop: 32 }}>
+            <Link to="/contact" className="link">
+              Let&rsquo;s talk →
+            </Link>
+          </div>
         </div>
       </section>
     </>

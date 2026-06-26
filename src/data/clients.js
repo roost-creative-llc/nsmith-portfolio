@@ -7,7 +7,7 @@ export const clients = [
   { name: "New York Life Investment Management", slug: "new-york-life", logo: L("new-york-life.svg") },
   { name: "ARSA", slug: "arsa", logo: L("arsa.png") },
   { name: "Care Options for Kids", slug: "care-options-for-kids", logo: L("care-options-for-kids.svg") },
-  { name: "Heart & Vascular Center of Arizona", slug: "hvca", logo: L("hvca.png") },
+  { name: "Heart & Vascular Center of Arizona", slug: "hvca" },
   { name: "KIPP", slug: "kipp" },
   { name: "Valor Charter Schools", slug: "valor" },
   { name: "Brookfield Properties", slug: "brookfield", logo: L("brookfield.png") },
