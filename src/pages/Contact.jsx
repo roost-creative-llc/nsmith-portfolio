@@ -47,7 +47,7 @@ export default function Contact() {
 
   return (
     <>
-      <section className="container" style={{ margin: "120px 0 96px" }}>
+      <section className="container" style={{ marginTop: 120, marginBottom: 96 }}>
         <div className="kick">Say hi</div>
         <h1 className="sf hero-h" style={{ margin: "18px 0 24px" }}>
           Let&rsquo;s make something.
