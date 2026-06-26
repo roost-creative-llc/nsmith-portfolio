@@ -12,11 +12,20 @@ const vid = (slug, n, { ar = 16 / 9, title = "", loop = false } = {}) => ({
   loop,
 });
 
+// TAXONOMY NOTE:
+//   `categories` = the controlled vocabulary the filter bar runs on (what the
+//     project IS). Keep these to CATEGORY_ORDER values only. First entry is the
+//     project's "headline" category and drives the card badge.
+//   `tags` = free-form deliverables/skills shown on the card/detail (what's IN it).
+//   Keeping them separate is what lets every project filter accurately while
+//   still showing rich, specific labels.
+
 // Ordered for the portfolio — Gentle Dental leads.
 export const projects = [
   {
     slug: "gentle-dental",
     name: "Gentle Dental",
+    categories: ["Web", "Branding"],
     tags: ["Web Design", "Brand Standards"],
     role: "Web Design · Brand",
     year: "2023",
@@ -36,7 +45,8 @@ export const projects = [
   {
     slug: "fifth-broadway",
     name: "Fifth + Broadway",
-    tags: ["Logo", "Web Design", "Brand Standards", "Collateral", "Signage", "Messaging"],
+    categories: ["Branding", "Web"],
+    tags: ["Logo", "Web Design", "Brand Standards", "Signage", "Collateral", "Messaging"],
     role: "Art Director",
     year: "2021",
     accent: "#84A6CF",
@@ -54,7 +64,8 @@ export const projects = [
   {
     slug: "grizzly-smokeless-tobacco",
     name: "Grizzly",
-    tags: ["Social Media", "Collateral", "NASCAR", "Video", "Photography", "Packaging"],
+    categories: ["Social", "Packaging"],
+    tags: ["Social Media", "Photography", "Video", "Packaging", "NASCAR", "Collateral"],
     role: "Art Director",
     year: "2020–2024",
     accent: "#E0913E",
@@ -83,6 +94,7 @@ export const projects = [
   {
     slug: "amivie",
     name: "Amivie",
+    categories: ["Branding", "Web"],
     tags: ["Logo", "Web Design", "Brand Standards", "Collateral"],
     role: "Art Director",
     year: "2023",
@@ -103,7 +115,8 @@ export const projects = [
   {
     slug: "synergy",
     name: "Synergy Health Partners",
-    tags: ["Brand Standards", "Collateral"],
+    categories: ["Branding", "Web"],
+    tags: ["Brand Standards", "Web Design", "Collateral"],
     role: "Brand Designer",
     year: "2022",
     accent: "#6E8FB5",
@@ -121,7 +134,8 @@ export const projects = [
   {
     slug: "common-john-brewing",
     name: "Common John Brewing",
-    tags: ["Logo", "Branding", "Collateral"],
+    categories: ["Branding", "Packaging"],
+    tags: ["Logo", "Brand Standards", "Packaging", "Collateral"],
     role: "Brand Designer",
     year: "2022",
     accent: "#C99A3F",
@@ -140,7 +154,8 @@ export const projects = [
   {
     slug: "fat-bottom-brewing",
     name: "Fat Bottom Brewing",
-    tags: ["Branding", "Collateral"],
+    categories: ["Branding"],
+    tags: ["Brand Standards", "Collateral"],
     role: "Brand Designer",
     year: "2021",
     accent: "#D2493F",
@@ -158,7 +173,8 @@ export const projects = [
   {
     slug: "the-monroe",
     name: "The Monroe",
-    tags: ["Branding", "Collateral"],
+    categories: ["Branding"],
+    tags: ["Brand Standards", "Collateral"],
     role: "Brand Designer",
     year: "2022",
     accent: "#7FA37F",
@@ -183,15 +199,21 @@ export const featuredSlugs = [
   "amivie",
 ];
 
-// Portfolio filter categories.
+// Canonical filter categories, in display order. The filter bar is built from
+// the categories ACTUALLY present in the data, so it can never show an empty
+// filter or drift out of sync as projects are added/edited.
+export const CATEGORY_ORDER = ["Branding", "Web", "Packaging", "Social"];
+
 export const filters = [
-  { label: "All", match: null },
-  { label: "Branding", match: ["Branding", "Brand Standards", "Logo"] },
-  { label: "Web Design", match: ["Web Design"] },
-  { label: "Social", match: ["Social Media"] },
-  { label: "Packaging", match: ["Packaging"] },
-  { label: "Signage", match: ["Signage"] },
+  "All",
+  ...CATEGORY_ORDER.filter((c) => projects.some((p) => p.categories.includes(c))),
 ];
+
+// Count of projects per filter label (for the "Branding (7)" style counts).
+export const filterCount = (label) =>
+  label === "All"
+    ? projects.length
+    : projects.filter((p) => p.categories.includes(label)).length;
 
 export function getProject(slug) {
   return projects.find((p) => p.slug === slug);

@@ -2,15 +2,14 @@ import { useMemo, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 import ScrollReveal from "../components/ScrollReveal";
 import CTABand from "../components/CTABand";
-import { projects, filters } from "../data/projects";
+import { projects, filters, filterCount } from "../data/projects";
 
 export default function Portfolio() {
   const [active, setActive] = useState("All");
 
   const visible = useMemo(() => {
-    const f = filters.find((x) => x.label === active);
-    if (!f || !f.match) return projects;
-    return projects.filter((p) => p.tags.some((t) => f.match.includes(t)));
+    if (active === "All") return projects;
+    return projects.filter((p) => p.categories.includes(active));
   }, [active]);
 
   return (
@@ -30,13 +29,13 @@ export default function Portfolio() {
 
       <section className="container" style={{ paddingBottom: "var(--space-10)" }}>
         <div className="filters" style={{ justifyContent: "center" }}>
-          {filters.map((f) => (
+          {filters.map((label) => (
             <button
-              key={f.label}
-              className={`filter-btn ${active === f.label ? "is-active" : ""}`}
-              onClick={() => setActive(f.label)}
+              key={label}
+              className={`filter-btn ${active === label ? "is-active" : ""}`}
+              onClick={() => setActive(label)}
             >
-              {f.label === "All" ? `All (${projects.length})` : f.label}
+              {`${label} (${filterCount(label)})`}
             </button>
           ))}
         </div>

@@ -13,7 +13,7 @@ export default function ProjectCard({ project }) {
       <div className="wcard__media">
         <SmartImage src={project.thumbnail} alt={`${project.name} project`} fallback={project.name} />
         <span className="wcard__accent" style={{ background: project.accent }}>
-          {project.tags[0]}
+          {project.categories[0]}
         </span>
       </div>
       <div className="wcard__body">
