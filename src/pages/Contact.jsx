@@ -1,8 +1,7 @@
 import ScrollReveal from "../components/ScrollReveal";
 
-// TODO: replace Formspree form ID before launch.
 const EMAIL = "helloroostcreative@gmail.com";
-const FORMSPREE_ACTION = "https://formspree.io/f/your-form-id";
+const FORMSPREE_ACTION = "https://formspree.io/f/xrewqlpr";
 
 export default function Contact() {
   return (
@@ -66,7 +65,6 @@ export default function Contact() {
               <button type="submit" className="pill pill--accent" style={{ alignSelf: "flex-start" }}>
                 Send it →
               </button>
-              <p className="form__note">⚑ Wire this form to Formspree before launch</p>
             </form>
           </ScrollReveal>
         </div>
