@@ -1,6 +1,6 @@
 import ScrollReveal from "../components/ScrollReveal";
 
-const EMAIL = "helloroostcreative@gmail.com";
+const EMAIL = "nsmithadve@gmail.com";
 const FORMSPREE_ACTION = "https://formspree.io/f/xrewqlpr";
 
 export default function Contact() {

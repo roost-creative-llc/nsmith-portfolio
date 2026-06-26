@@ -11,7 +11,7 @@ export default function Footer() {
           <Link to="/portfolio">Work</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-          <a href="mailto:helloroostcreative@gmail.com">Email</a>
+          <a href="mailto:nsmithadve@gmail.com">Email</a>
         </nav>
         <span className="footer__meta">Made in Memphis · © 2025</span>
       </div>
