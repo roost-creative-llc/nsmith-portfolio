@@ -17,7 +17,7 @@ export default function ProjectDetail() {
   const videos = project.videos || [];
 
   return (
-    <div style={{ "--accent": project.accent }}>
+    <div className="detail-page" style={{ "--accent": project.accent }}>
       <section className="container detail-hero">
         <p className="label detail-hero__kicker">
           {project.role} · {project.year}

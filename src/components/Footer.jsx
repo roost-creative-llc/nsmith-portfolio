@@ -13,7 +13,7 @@ export default function Footer() {
           <Link to="/contact">Contact</Link>
           <a href="mailto:nsmithadve@gmail.com">Email</a>
         </nav>
-        <span className="footer__meta">Made in Memphis · © 2025</span>
+        <span className="footer__meta">Made in Memphis · © {new Date().getFullYear()}</span>
       </div>
     </footer>
   );

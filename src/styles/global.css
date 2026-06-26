@@ -20,6 +20,9 @@ body {
   color: var(--ink);
   background: var(--cream);
   overflow-x: clip;
+  /* Stop the mobile rubber-band overscroll that reveals endless background
+     past the footer — the scroll now "catches" firmly at the page edges. */
+  overscroll-behavior-y: none;
   letter-spacing: -0.005em;
 }
 #root {
@@ -169,6 +172,12 @@ main {
 .pill--ink:hover {
   transform: translateY(-2px);
   background: var(--orange);
+}
+/* On the orange CTA band, the ink pill's orange hover would vanish into the
+   background — invert to a light pill so it stays clearly visible. */
+.cta .pill--ink:hover {
+  background: var(--cream);
+  color: var(--ink);
 }
 .pill--accent {
   background: var(--accent);
@@ -832,12 +841,26 @@ main {
 /* ============================================================
    PROJECT DETAIL (light)
    ============================================================ */
+/* Each project page is washed with its own creative (accent) color at the top,
+   fading into the bone background. --accent is set per-project on .detail-page. */
+.detail-page {
+  background-color: var(--cream);
+  background-image: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 34%, var(--cream)) 0,
+    color-mix(in srgb, var(--accent) 12%, var(--cream)) 320px,
+    var(--cream) 760px
+  );
+  background-repeat: no-repeat;
+}
 .detail-hero {
   text-align: center;
   padding-top: clamp(20px, 4vw, 40px);
 }
 .detail-hero__kicker {
   margin-bottom: 12px;
+  /* Deep version of the project accent so it stays legible on the accent wash. */
+  color: color-mix(in srgb, var(--accent) 55%, var(--ink));
 }
 .detail-hero__title {
   font-family: var(--font-display);
