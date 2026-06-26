@@ -1,38 +1,49 @@
 import { Link } from "react-router-dom";
 import HeroReel from "../components/HeroReel";
-import LogoMarquee from "../components/LogoMarquee";
 import ProjectCard from "../components/ProjectCard";
 import ScrollReveal from "../components/ScrollReveal";
-import CTABand from "../components/CTABand";
+import LogoMarquee from "../components/LogoMarquee";
 import { projects } from "../data/projects";
 
 const STATS = [
-  { num: "0→32K", lab: "Followers, from zero", bg: "var(--yellow)" },
-  { num: "30+", lab: "ADDY Awards", bg: "var(--peach)" },
-  { num: "15", lab: "Years at it", bg: "var(--lavender)" },
-  { num: "4", lab: "Industries", bg: "var(--mint)" },
+  { num: "15", lab: "Years art-directing" },
+  { num: "30+", lab: "ADDY awards" },
+  { num: "Brewery to NASCAR", lab: "Range of work", sm: true },
+  { num: "0 → 32K", lab: "Grizzly reach" },
 ];
 
-export default function Home() {
-  const favorites = projects.slice(0, 6);
+// Grizzly is the hero reel, so the grid shows the other six brands.
+const grid = projects
+  .filter((p) => p.slug !== "grizzly-smokeless-tobacco")
+  .slice(0, 6);
 
+export default function Home() {
   return (
     <>
       <HeroReel />
 
-      {/* SELECTED WORK */}
-      <section className="section section--paper">
-        <div className="container">
+      {/* SELECTED WORK — six brands + a way through to the rest */}
+      <section className="section">
+        <div className="wrap">
           <ScrollReveal>
-            <div className="sec-head">
-              <h2 className="sec-head__title">A few favorites</h2>
-              <Link to="/portfolio" className="arrow-link">
-                All 8 projects →
+            <div
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: 16,
+              }}
+            >
+              <p className="lab">Selected work</p>
+              <Link to="/portfolio" className="link">
+                See all work →
               </Link>
             </div>
           </ScrollReveal>
-          <div className="workgrid">
-            {favorites.map((p, i) => (
+
+          <div className="grid3" style={{ marginTop: 44 }}>
+            {grid.map((p, i) => (
               <ScrollReveal key={p.slug} delay={(i % 3) * 70}>
                 <ProjectCard project={p} />
               </ScrollReveal>
@@ -41,25 +52,20 @@ export default function Home() {
         </div>
       </section>
 
-      <LogoMarquee />
-
-      {/* STATS */}
+      {/* STATS — the shape of it */}
       <section className="section">
-        <div className="container">
+        <div className="wrap">
           <ScrollReveal>
-            <p className="label" style={{ textAlign: "center", marginBottom: 8 }}>
-              By the numbers
+            <p className="lab" style={{ marginBottom: 28 }}>
+              The shape of it
             </p>
-            <h2 className="sec-head__title" style={{ textAlign: "center", marginBottom: 28 }}>
-              A few results worth sharing.
-            </h2>
           </ScrollReveal>
           <ScrollReveal>
-            <div className="statgrid">
+            <div className="stats">
               {STATS.map((s) => (
-                <div className="statcard" key={s.num} style={{ background: s.bg }}>
-                  <div className="statcard__num">{s.num}</div>
-                  <div className="statcard__lab">{s.lab}</div>
+                <div className="stat" key={s.lab}>
+                  <span className={`n${s.sm ? " sm" : ""}`}>{s.num}</span>
+                  <span className="l">{s.lab}</span>
                 </div>
               ))}
             </div>
@@ -67,30 +73,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT TEASER */}
-      <section className="section section--paper">
-        <div className="container" style={{ textAlign: "center", maxWidth: 760 }}>
-          <ScrollReveal>
-            <p className="label" style={{ marginBottom: 12 }}>
-              Hi, I&rsquo;m Nick
-            </p>
-            <h2 className="display" style={{ fontSize: "var(--fs-h2)" }}>
-              A senior art director who sweats the{" "}
-              <span className="accent">details.</span>
-            </h2>
-            <p style={{ color: "var(--ink-60)", margin: "16px auto 0", maxWidth: "52ch", lineHeight: 1.7 }}>
-              Breweries, NASCAR, healthcare, real estate — fifteen years of building
-              brands that punch above their budgets. I care about strategy, craft, and the
-              details that make the difference.
-            </p>
-            <Link to="/about" className="arrow-link" style={{ marginTop: 22 }}>
-              More about me →
+      {/* CLIENTS — slow seamless logo carousel */}
+      <LogoMarquee />
+
+      {/* CLOSE — typographic closing line */}
+      <section className="section">
+        <div className="wrap">
+          <ScrollReveal className="close">
+            <span className="ln">
+              Got a brand that&rsquo;s ready for what&rsquo;s next? Let&rsquo;s
+              get into it.
+            </span>
+          </ScrollReveal>
+          <ScrollReveal style={{ marginTop: 32 }}>
+            <Link to="/contact" className="link">
+              Let&rsquo;s talk →
             </Link>
           </ScrollReveal>
         </div>
       </section>
-
-      <CTABand />
     </>
   );
 }

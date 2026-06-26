@@ -10,12 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fontsource/archivo": "^5.2.8",
-    "@fontsource/bricolage-grotesque": "^5.2.10",
-    "@fontsource/inter": "^5.2.8",
-    "@fontsource/playfair-display": "^5.2.8",
-    "@fontsource/poppins": "^5.2.7",
-    "@fontsource/space-mono": "^5.2.9",
     "framer-motion": "^12.40.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

@@ -31,6 +31,7 @@ export const projects = [
     year: "2023",
     accent: "#2FA8C7",
     result: "A conversion-built site that turns visits into booked appointments.",
+    outcome: "A site built to turn a visit into a booked appointment.",
     metric: "Booked.",
     metricLabel: "A site built to turn visits into appointments",
     brief:
@@ -51,6 +52,15 @@ export const projects = [
     year: "2021",
     accent: "#84A6CF",
     result: "A bold identity for Nashville's premier 6.2-acre destination.",
+    outcome: "An identity for Nashville's downtown destination.",
+    cao: {
+      challenge:
+        "Nashville's largest mixed-use destination — 6.2 acres on the old convention center site — needed a brand as big and walkable as the place itself.",
+      approach:
+        "We wove the city's historic architecture into a contemporary identity: a stylized '5+B' mark, neon signage, and wayfinding that guides you through retail, dining, entertainment, offices, and homes.",
+      outcome:
+        "A brand that holds up at every scale — from a logo to the side of a building.",
+    },
     metric: "6.2 acres",
     metricLabel: "Nashville's premier mixed-use destination",
     brief:
@@ -70,6 +80,15 @@ export const projects = [
     year: "2020–2024",
     accent: "#E0913E",
     result: "Grew the brand from 0 to 32,000 followers since 2020 — all real, no bots.",
+    outcome: "Built a rugged, real social presence from zero.",
+    cao: {
+      challenge:
+        "Grizzly needed a social presence as rugged and real as the people who actually use it. There was nothing to build on — the account started at zero.",
+      approach:
+        "We leaned into outdoor authenticity and product range, then anchored it with high-engagement campaigns like 'See Y'all Out There' and a 20-Year Blowout activation. Every post earned its place in the feed.",
+      outcome:
+        "0 to 32,000 Instagram followers since 2020, plus 20K on Facebook — all real, no bots.",
+    },
     metric: "0 → 32,000",
     metricLabel: "Instagram followers · plus 20K on Facebook · zero bots",
     brief:
@@ -100,6 +119,7 @@ export const projects = [
     year: "2023",
     accent: "#7CB3A4",
     result: "A brand and site that make healthcare feel human.",
+    outcome: "A brand and site that make community healthcare feel personal.",
     metric: "Human",
     metricLabel: "Healthcare that finally feels personal",
     brief:
@@ -121,6 +141,7 @@ export const projects = [
     year: "2022",
     accent: "#6E8FB5",
     result: "A cohesive system for a fast-growing healthcare network.",
+    outcome: "One identity across a growing network of clinics.",
     metric: "Unified",
     metricLabel: "One system across a multi-location network",
     brief:
@@ -140,6 +161,7 @@ export const projects = [
     year: "2022",
     accent: "#C99A3F",
     result: "A full identity for the bar, the can, and the community.",
+    outcome: "A full identity made for the bar, the can, and the regulars.",
     metric: "On tap",
     metricLabel: "A brand for the bar, the can, and the community",
     brief:
@@ -160,6 +182,15 @@ export const projects = [
     year: "2021",
     accent: "#D2493F",
     result: "Expanded a beloved brewery's brand — irreverence intact.",
+    outcome: "Expanded a beloved Nashville brewery — irreverence fully intact.",
+    cao: {
+      challenge:
+        "One of Nashville's most loved breweries was expanding into new touchpoints — and its irreverent personality was the whole point. None of that could get lost in the process.",
+      approach:
+        "We built a collateral system that carried the brand's voice into every new place it showed up — character sharp, tone intact.",
+      outcome:
+        "A wider, more capable brand with its irreverence completely intact — same Fat Bottom, more room to play.",
+    },
     metric: "Intact",
     metricLabel: "Irreverence kept, reach expanded",
     brief:
@@ -179,6 +210,7 @@ export const projects = [
     year: "2022",
     accent: "#7FA37F",
     result: "Luxury, made approachable for a mixed-use property.",
+    outcome: "Luxury for a mixed-use property, made approachable.",
     metric: "Elevated",
     metricLabel: "Luxury made approachable",
     brief:

@@ -1,54 +1,56 @@
 import { Link } from "react-router-dom";
-
-const RESUME_URL =
-  "https://www.nsmithadve.com/s/Nicholas-Smith_Creative-Director-Art-jjlk.pdf";
+import { useReducedMotion } from "framer-motion";
 
 const REEL = "/videos/grizzly-smokeless-tobacco/grizzly-smokeless-tobacco-01.mp4";
 const POSTER = "/videos/grizzly-smokeless-tobacco/grizzly-smokeless-tobacco-01.jpg";
 
-/** Visual showreel hero — the work leads. */
+/**
+ * Dark "Index" hero — sophisticated showreel.
+ * Locked headline + framed Grizzly reel (no text over the video);
+ * caption sits BENEATH the frame.
+ */
 export default function HeroReel() {
+  const reduce = useReducedMotion();
   return (
-    <section className="hero-reel">
-      <div className="container">
-        <div className="hero-reel__stage">
+    <section className="hero-reel section">
+      <div className="wrap">
+        <span className="kick">Senior Art Director · Memphis</span>
+        <h1 className="sf hero-h">
+          I make brands look sharp and feel like themselves.
+        </h1>
+        <p className="sub">
+          Branding, packaging, and websites — from craft breweries to NASCAR.
+        </p>
+
+        <div className="reel" style={{ marginTop: 48 }}>
           <video
             src={REEL}
             poster={POSTER}
-            autoPlay
+            autoPlay={!reduce}
+            loop={!reduce}
             muted
-            loop
             playsInline
-            preload="auto"
+            controls={reduce}
+            preload={reduce ? "none" : "auto"}
+            aria-label="Grizzly featured showreel"
           />
-          <span className="hero-reel__scrim" aria-hidden="true" />
+          <span className="tag">
+            <span className="dot" aria-hidden="true" />
+            Featured — Grizzly
+          </span>
+          <span className="runtime">1:48</span>
+        </div>
 
-          <Link
-            to="/portfolio/grizzly-smokeless-tobacco"
-            className="hero-reel__tag"
-            aria-label="Featured project: Grizzly"
-          >
-            Featured · Grizzly →
-          </Link>
-
-          <div className="hero-reel__overlay">
-            <span className="hx__kick hx__kick--light">
-              <span className="hx__dot" aria-hidden="true" />
-              Art Director · Memphis · Open to work
-            </span>
-            <h1 className="hero-reel__title">I make brands impossible to ignore.</h1>
-            <p className="hero-reel__sub">
-              Branding, packaging, and websites built to stand out — and stay that way.
-            </p>
-            <div className="hx__cta">
-              <Link to="/portfolio" className="pill pill--paper">
-                See the work →
-              </Link>
-              <a href={RESUME_URL} target="_blank" rel="noreferrer" className="pill pill--glass">
-                Résumé
-              </a>
+        <div className="cap">
+          <div>
+            <div className="nm">Grizzly</div>
+            <div className="ou">
+              Built the social presence from scratch and gave it room to run.
             </div>
           </div>
+          <Link to="/portfolio/grizzly-smokeless-tobacco" className="link">
+            View project →
+          </Link>
         </div>
       </div>
     </section>

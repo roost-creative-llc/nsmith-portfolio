@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 const LINKS = [
@@ -9,6 +9,8 @@ const LINKS = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const closeRef = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -17,33 +19,45 @@ export default function Nav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    closeRef.current?.focus();
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const close = () => {
+    setOpen(false);
+    toggleRef.current?.focus();
+  };
+
   return (
     <>
       <header className="nav">
-        <div className="container nav__inner">
-          <Link to="/" className="nav__logo" aria-label="Nick Smith — home">
-            nick smith<span>.</span>
+        <nav className="bar wrap" aria-label="Primary">
+          <Link to="/" className="name sf" aria-label="Nick Smith — home">
+            Nick Smith
           </Link>
 
-          <nav className="nav__links" aria-label="Primary">
+          <span className="links">
             {LINKS.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
-                className={({ isActive }) => `nav__link ${isActive ? "is-active" : ""}`}
+                className={({ isActive }) => (isActive ? "is-active" : "")}
               >
                 {l.label}
               </NavLink>
             ))}
-          </nav>
-
-          <Link to="/contact" className="nav__cta">
-            Say hi
-          </Link>
+          </span>
 
           <button
-            className="nav__toggle"
-            aria-label="Open menu"
+            ref={toggleRef}
+            className={`nav__toggle ${open ? "is-open" : ""}`}
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
@@ -51,31 +65,45 @@ export default function Nav() {
             <span />
             <span />
           </button>
-        </div>
+        </nav>
       </header>
 
       {open && (
-        <div className="nav__overlay" role="dialog" aria-modal="true">
-          <div className="nav__overlay-top container">
-            <Link to="/" className="nav__logo" onClick={() => setOpen(false)}>
-              nick smith<span>.</span>
+        <div
+          className="nav__overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+        >
+          <div className="nav__overlay-top wrap">
+            <Link to="/" className="name sf" onClick={close}>
+              Nick Smith
             </Link>
-            <button className="nav__close" aria-label="Close menu" onClick={() => setOpen(false)}>
+            <button
+              ref={closeRef}
+              className="nav__close"
+              aria-label="Close menu"
+              onClick={close}
+            >
               ✕
             </button>
           </div>
-          <nav className="nav__overlay-links container" aria-label="Mobile">
+          <nav className="nav__overlay-links wrap" aria-label="Mobile">
             {LINKS.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
-                onClick={() => setOpen(false)}
+                onClick={close}
                 className={({ isActive }) => (isActive ? "is-active" : "")}
               >
                 {l.label}
               </NavLink>
             ))}
-            <a href="mailto:nsmithadve@gmail.com" className="nav__overlay-mail" onClick={() => setOpen(false)}>
+            <a
+              href="mailto:nsmithadve@gmail.com"
+              className="nav__overlay-mail"
+              onClick={close}
+            >
               nsmithadve@gmail.com
             </a>
           </nav>
