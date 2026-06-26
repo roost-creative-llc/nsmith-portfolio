@@ -75,8 +75,8 @@ export default function Nav() {
                 {l.label}
               </NavLink>
             ))}
-            <a href="mailto:nsmithadve@gmail.com" className="nav__overlay-mail" onClick={() => setOpen(false)}>
-              nsmithadve@gmail.com
+            <a href="mailto:helloroostcreative@gmail.com" className="nav__overlay-mail" onClick={() => setOpen(false)}>
+              helloroostcreative@gmail.com
             </a>
           </nav>
         </div>

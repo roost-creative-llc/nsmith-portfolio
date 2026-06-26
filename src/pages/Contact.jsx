@@ -1,7 +1,7 @@
 import ScrollReveal from "../components/ScrollReveal";
 
 // TODO: replace Formspree form ID before launch.
-const EMAIL = "nsmithadve@gmail.com";
+const EMAIL = "helloroostcreative@gmail.com";
 const FORMSPREE_ACTION = "https://formspree.io/f/your-form-id";
 
 export default function Contact() {
