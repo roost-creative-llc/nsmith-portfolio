@@ -100,10 +100,8 @@ export default function About() {
         {roles.map((role, i) => (
           <ScrollReveal key={role.company} delay={i * 50}>
             <div
+              className="role-row"
               style={{
-                display: "grid",
-                gridTemplateColumns: "120px 1fr",
-                gap: 40,
                 padding: "32px 0",
                 borderTop: "1px solid var(--line)",
                 borderBottom:

@@ -1120,3 +1120,40 @@ footer.ft,
     opacity: 1 !important;
   }
 }
+
+/* ============================================================
+   Two-up layouts — desktop columns live here (not inline), so the
+   mobile single-column rule below can actually win. Inline
+   grid-template-columns used to override the media query and kept
+   these blocks two-up on phones.
+   ============================================================ */
+.detail-intro {
+  grid-template-columns: 1.5fr 1fr;
+  align-items: start;
+}
+.contact-layout {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.role-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+}
+
+/* Mobile: everything is one column. Non-negotiable. */
+@media (max-width: 768px) {
+  .detail-intro,
+  .contact-layout,
+  .form-grid,
+  .role-row {
+    grid-template-columns: 1fr;
+  }
+  .role-row {
+    gap: 6px;
+  }
+}

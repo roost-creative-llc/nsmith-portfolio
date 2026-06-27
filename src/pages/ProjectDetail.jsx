@@ -100,7 +100,7 @@ export default function ProjectDetail() {
       <section className="container" style={{ paddingTop: "var(--space-block)" }}>
         <div
           className="grid2 detail-intro"
-          style={{ gridTemplateColumns: "1.5fr 1fr", alignItems: "start" }}
+          style={{ alignItems: "start" }}
         >
           <ScrollReveal>
             <div className="lab">The brief</div>

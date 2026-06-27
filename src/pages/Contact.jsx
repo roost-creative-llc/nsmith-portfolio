@@ -61,7 +61,6 @@ export default function Contact() {
       <section
         className="container grid2 contact-layout"
         style={{
-          gridTemplateColumns: "0.8fr 1.2fr",
           gap: 80,
           alignItems: "start",
           marginBottom: 128,
@@ -108,13 +107,7 @@ export default function Contact() {
               </div>
             ) : (
               <form className="form" onSubmit={handleSubmit} noValidate>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 24,
-                  }}
-                >
+                <div className="form-grid">
                   <div className="fld">
                     <label htmlFor="name">
                       Name <span aria-hidden="true">*</span>
